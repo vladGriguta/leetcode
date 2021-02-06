@@ -12,4 +12,4 @@ class Solution:
         if c>0:
             output[(i-1)%num_people]+=c
 
-        return output
+        return output 
