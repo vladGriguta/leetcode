@@ -1,0 +1,26 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix:
+            return False
+        m = len(matrix)
+        n = len(matrix[0])
+        
+        for i in range(max(m,n)):
+            m_curr = min(i,m-1)
+            n_curr = min(i,n-1)
+            if matrix[m_curr][n_curr] >= target:
+                break
+        
+        if matrix[m_curr][n_curr] == target:
+            return True
+        
+        for i in range(m_curr):
+            for j in range(n_curr,n):
+                if matrix[i][j] == target:
+                    return True
+        for j in range(n_curr):
+            for i in range(m_curr,m):
+                if matrix[i][j] == target:
+                    return True
+        
+        return False
